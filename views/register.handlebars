@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="header-text">
+        <div>
+            <h1>શ્રી આરૂણી શૈક્ષણીક સંકુલ - સાણથલી</h1>
+        </div>
+        <div>
+            <h2>જ્ઞાનોત્સવ - ૨૦૨૪</h2>
+        </div>
+    </div>
+    
+        <div>
+            {{#if successMessage}}
+            <div class="success-message" id="successMessage">{{ successMessage }}</div>
+            <script>
+                setTimeout(function () {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 1000);
+            </script>
+            {{/if}}
+
+            {{#if errorMessage}}
+            <div class="error-message" id="errorMessage">{{ errorMessage }}</div>
+            <script>
+                setTimeout(function () {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 1000);
+            </script>
+            {{/if}}
+        </div>
+    <div class="main-section">
+        <form action="/register" method="post" autocomplete="off">
+            <div class="header">
+                <img src="images/LOGO.jpg" class="logo">
+            </div>
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="village">Village:</label>
+            <input type="text" id="village" name="village" required>
+            <br>
+            <div class="userType">
+                <div class="userType-student">
+                    <input type="radio" id="student" name="category" value="Student" required>
+                    <label for="student">Student</label>
+                </div>
+                <div class="userType-parent">
+                    <input type="radio" id="parent" name="category" value="Parent" required>
+                    <label for="parent">Parent</label>
+                </div>
+            </div>
+            <br>
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" required autocomplete="off">
+            <br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <footer>Developed by @Elvin-Khunt</footer>
+</div>

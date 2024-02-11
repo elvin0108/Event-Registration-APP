@@ -25,7 +25,8 @@ app.set('view engine', 'handlebars');
 
 // Set static folder
 app.use(express.static('public'));
-app.use(express.static(`/Projects/Science Fair/node-registration-form`));
+app.set('views', ./views);
+
 
 // Routes
 const registrationRoutes = require('./routes/registrationRoutes');

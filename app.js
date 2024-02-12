@@ -25,7 +25,6 @@ app.set('view engine', 'handlebars');
 
 // Set static folder
 app.use(express.static('public'));
-app.set('views', ./views);
 
 
 // Routes

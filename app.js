@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017mongodb+srv://elvinkhunt:elvin2024@cluster0.bnnyp5a.mongodb.net//registrationForm")
+mongoose.connect("mongodb+srv://elvinkhunt:elvin2024@cluster0.bnnyp5a.mongodb.net/registrationForm")
 .then(()=>{
     console.log("Mongo Connected succesfully");
 })

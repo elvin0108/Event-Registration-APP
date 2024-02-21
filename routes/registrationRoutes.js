@@ -9,15 +9,15 @@ router.get('/', (req, res) => {
 
 // Handle registration form submission
 router.post('/', (req, res) => {
-  const { username, mobile, category, village} = req.body;
-  console.log("Visitor data received", {date: new Date(), username, mobile, category, village});
+  const { username, mobile, category, village, std, school} = req.body;
+  console.log("Visitor data received", {date: new Date(), username, mobile, category, village, std, school});
 
   // Save user to MongoDB
-  const newUser = new User({ username, mobile, category, village });
+  const newUser = new User({ username, mobile, category, village, std, school});
   newUser.save()
     .then(() => {
       console.log("Data stored in db");  
-      res.render('register', { successMessage: 'Registration successful!' });
+      res.render('register', { successMessage: 'Registration successful!', mobile: mobile, name: username});
     })
     .catch((err) => {
       console.error(err);

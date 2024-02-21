@@ -11,9 +11,13 @@
         <div>
             {{#if successMessage}}
             <div class="success-message" id="successMessage">{{ successMessage }}</div>
+            <div class="name-display" id="name-display" style="display:none">{{name}}</div>
             <script>
                 setTimeout(function () {
                     document.getElementById('successMessage').style.display = 'none';
+                    var name = document.getElementById('name-display').innerHTML;
+                    console.log(name);
+                    openWhatsApp({{mobile}}, name);
                 }, 1000);
             </script>
             {{/if}}
@@ -30,7 +34,7 @@
     <div class="main-section">
         <form action="/register" method="post" autocomplete="off">
             <div class="header">
-                <img src="https://i.pinimg.com/736x/51/a6/6c/51a66cf417d2a933d1fa1b86cbc9f32f.jpg" class="logo">
+                <img src="images/LOGO.jpg" class="logo">
             </div>
             <label for="username">Name:</label>
             <input type="text" id="username" name="username" required>
@@ -38,16 +42,27 @@
             <label for="village">Village:</label>
             <input type="text" id="village" name="village" required>
             <br>
+            <br>
+            <label for="std">Standard:</label>
+            <input type="text" id="std" name="std" required>
+            <br>
             <div class="userType">
                 <div class="userType-student">
-                    <input type="radio" id="student" name="category" value="Student" required>
+                    <input type="radio" id="student" name="category" value="Student" required onchange="toggleSchoolDropdown()">
                     <label for="student">Student</label>
                 </div>
                 <div class="userType-parent">
-                    <input type="radio" id="parent" name="category" value="Parent" required>
+                    <input type="radio" id="parent" name="category" value="Parent" required onchange="toggleSchoolDropdown()">
                     <label for="parent">Parent</label>
                 </div>
             </div>
+            <br>
+            <label for="school" id="schoolLabel" style="display:none;">School:</label>
+            <select id="school" name="school" required style="display:none;">
+                <option value="Shree Aruni School - Sanathali">Shree Aruni School - Sanathali</option>
+                <option value="Shree Sardar patel School - Sanathali">Shree Sardar patel School - Sanathali</option>
+                <option value="Shree Sanathali prathmik shal">Shree Sanathali prathmik shala</option>
+            </select>
             <br>
             <label for="mobile">Mobile:</label>
             <input type="text" id="mobile" name="mobile" required autocomplete="off">
@@ -57,3 +72,27 @@
     </div>
     <footer>Developed by @Elvin-Khunt</footer>
 </div>
+
+<script>
+    function openWhatsApp(mobile, name) {
+        var whatsappNumber = mobile;
+        var name = name;
+        var whatsappLink = 'https://wa.me/91'+whatsappNumber+'?text=નમસ્કાર '+name+'! *જ્ઞાનોત્સવ-2024* માં મુલાકાત લેવા બદલ આભાર… શ્રી આરુણી શૈક્ષણિક સંકુલ - સાણથલી આપનું હાર્દિક સ્વાગત કરે છે.';
+        console.log(whatsappLink);
+        window.open(whatsappLink, '_blank');
+    }
+
+    function toggleSchoolDropdown() {
+            var studentRadioButton = document.getElementById('student');
+            var schoolLabel = document.getElementById('schoolLabel');
+            var schoolDropdown = document.getElementById('school');
+
+            if (studentRadioButton.checked) {
+                schoolLabel.style.display = 'block';
+                schoolDropdown.style.display = 'block';
+            } else {
+                schoolLabel.style.display = 'none';
+                schoolDropdown.style.display = 'none';
+            }
+        }
+</script>

@@ -60,9 +60,23 @@
             <label for="school" id="schoolLabel" style="display:none;">School:</label>
             <select id="school" name="school" required style="display:none;">
                 <option value="Shree Aruni School - Sanathali">Shree Aruni School - Sanathali</option>
-                <option value="Shree Sardar patel School - Sanathali">Shree Sardar patel School - Sanathali</option>
-                <option value="Shree Sanathali prathmik shal">Shree Sanathali prathmik shala</option>
+                <option value="લોન કોટડા પ્રાથમિક શાળા">લોન કોટડા પ્રાથમિક શાળા</option>
+                <option value="થોરખાણ પ્રાથમિક શાળા">થોરખાણ પ્રાથમિક શાળા</option>
+                <option value="જીવાપર પ્રાથમિક શાળા">જીવાપર પ્રાથમિક શાળા</option>
+                <option value="નવાગામ પ્રાથમિક શાળા">નવાગામ પ્રાથમિક શાળા</option>
+                <option value="ડોડીયાળા પ્રાથમિક શાળા">ડોડીયાળા પ્રાથમિક શાળા</option>
+                <option value="મેઘપર પ્રાથમિક શાળા">મેઘપર પ્રાથમિક શાળા</option>
+                <option value="દોલતપર પ્રાથમિક શાળા">દોલતપર પ્રાથમિક શાળા</option>
+                <option value="વેરાવળ પ્રાથમિક શાળા">વેરાવળ પ્રાથમિક શાળા</option>
+                <option value="ગરણી પ્રાથમિક શાળા">ગરણી પ્રાથમિક શાળા</option>
+                <option value="જનતા વિદ્યાલય - થોરખાણ">જનતા વિદ્યાલય - થોરખાણ</option>
+                <option value="સાણથલી પ્રાથમિક શાળા">સાણથલી પ્રાથમિક શાળા</option>
+                <option value="આદર્શ સ્કુલ - ડોડીયાળા">આદર્શ સ્કુલ - ડોડીયાળા</option>
+                <option value="સરદાર સ્કુલ સાણથલી">સરદાર સ્કુલ સાણથલી</option>
+                <option value="GPS હાઈસ્કુલ સાણથલી">GPS હાઈસ્કુલ સાણથલી</option>
+                <option value="other">Other</option>
             </select>
+            <input type="text" id="otherSchool" name="otherSchool" placeholder="Enter school name" style="display:none;">
             <br>
             <label for="mobile">Mobile:</label>
             <input type="text" id="mobile" name="mobile" required autocomplete="off">
@@ -83,16 +97,32 @@
     }
 
     function toggleSchoolDropdown() {
-            var studentRadioButton = document.getElementById('student');
-            var schoolLabel = document.getElementById('schoolLabel');
-            var schoolDropdown = document.getElementById('school');
+        var studentRadioButton = document.getElementById('student');
+        var schoolLabel = document.getElementById('schoolLabel');
+        var schoolDropdown = document.getElementById('school');
+        var otherSchoolInput = document.getElementById('otherSchool');
 
-            if (studentRadioButton.checked) {
-                schoolLabel.style.display = 'block';
-                schoolDropdown.style.display = 'block';
-            } else {
-                schoolLabel.style.display = 'none';
-                schoolDropdown.style.display = 'none';
-            }
+        if (studentRadioButton.checked) {
+            schoolLabel.style.display = 'block';
+            schoolDropdown.style.display = 'block';
+            otherSchoolInput.style.display = 'none';  // Hide the manual entry field
+        } else {
+            schoolLabel.style.display = 'none';
+            schoolDropdown.style.display = 'none';
+            otherSchoolInput.style.display = 'block';  // Show the manual entry field
         }
+    }
+
+    // Modify the form submission logic to handle manual entry
+    document.querySelector('form').addEventListener('submit', function (event) {
+        var studentRadioButton = document.getElementById('student');
+        var schoolDropdown = document.getElementById('school');
+        var otherSchoolInput = document.getElementById('otherSchool');
+
+        if (studentRadioButton.checked && schoolDropdown.value === 'other') {
+            // Use the manually entered school name
+            schoolDropdown.value = otherSchoolInput.value;
+        }
+        // Continue with the form submission logic
+    });
 </script>

@@ -105,11 +105,14 @@
         if (studentRadioButton.checked) {
             schoolLabel.style.display = 'block';
             schoolDropdown.style.display = 'block';
-            otherSchoolInput.style.display = 'none';  // Hide the manual entry field
         } else {
             schoolLabel.style.display = 'none';
             schoolDropdown.style.display = 'none';
-            otherSchoolInput.style.display = 'block';  // Show the manual entry field
+        }
+         if (schoolDropdown.value === 'other') {
+            otherSchoolInput.style.display = 'block';
+        } else {
+            otherSchoolInput.style.display = 'none';
         }
     }
 
